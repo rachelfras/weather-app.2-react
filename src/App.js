@@ -45,14 +45,14 @@ export default function App() {
             <div>
             <a
           href="https://github.com/rachelfras/weather-app-react"
-          class="git-link"
+          className="git-link"
           target="_blank"
           rel="noreferrer"
         >
           Open-source code
         </a>
         <p> by Rachel Fraser</p>
-        <div class="icon-credit">
+        <div className="icon-credit">
           Icons made by 
           <a
             href="https://www.flaticon.com/authors/iconixar"
