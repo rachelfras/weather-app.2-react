@@ -1,13 +1,14 @@
 import './App.css';
+import Current from "./Current";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <div className="container">
-        Testing
+        <section className="current-weather">
+          <Current />
+        </section>
       </div>
     </div>
   );
 }
-
-export default App;
