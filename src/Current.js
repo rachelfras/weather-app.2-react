@@ -1,7 +1,23 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import "./App.css";
 
 export default function Current(){
+    const [ready, setReady] = useState(false);
+    const [weatherData, setWeatherData] = useState({});
+
+  function handleResponse(response){
+    setReady(true);
+    console.log(response.data.main.temp_min);
+    setWeatherData({
+      temperature: response.data.main.temp,
+      min_temperature: response.data.main.temp_min,
+      max_temperature: response.data.main.temp_max
+    })
+  }
+
+
+  if (ready){
     return (
       <section className="current-weather">
         <div className="row">
@@ -10,11 +26,13 @@ export default function Current(){
                 <div className="row">
                   <div className="col-6 Temperature">
                       <h1>
-                        <span id="big-temp">13</span>°C
+                        <span id="big-temp">{Math.round(weatherData.temperature)}</span>°C
                       </h1>
                       <hr />
                       <p>
-                        <span id="max">14</span>°/<span id="min">9</span>°
+                        <span id="max">{Math.round(weatherData.max_temperature)}</span>
+                        °/
+                        <span id="min">{Math.round(weatherData.min_temperature)}</span>°
                       </p>
                   </div>
                   <div className="col-6">
@@ -48,4 +66,12 @@ export default function Current(){
           </div>
       </section>
     )
+  } else {
+    const apiKey = `fa1047ba99073894a88e54f4a5673a70`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(handleResponse);
+
+    return(`loading...`);
+  }
 }
