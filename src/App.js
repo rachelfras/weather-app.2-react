@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import Current from "./Current";
 
 
 export default function App() {
+  const [city, setCity] = useState("Tokyo");
+
+  function handleSubmit(event){
+    event.preventDefault();
+  }
+
+  function handleValue(event){
+    event.preventDefault();
+    setCity(event.target.value);
+  }
+
   return (
     <div className="App">
       <div className="widget">
         <header>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="input-group">
                 <input type="text"
               className="form-control form-bar enter"
               placeholder="Enter City"
-              //onChange={handleValue}
+              onChange={handleValue}
                 />
                 <div className="input-group-append" id="button-addon4">
                 <input
@@ -33,7 +44,7 @@ export default function App() {
             </div>
           </form>
         </header>
-          <Current />
+          <Current city={city}/>
           <div className="forecast">
           <div id="forecast-box" className="container">
             <div className="row">
