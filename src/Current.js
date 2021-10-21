@@ -8,11 +8,16 @@ export default function Current(){
 
   function handleResponse(response){
     setReady(true);
-    console.log(response.data.main.temp_min);
+    console.log(response.data);
     setWeatherData({
       temperature: response.data.main.temp,
       min_temperature: response.data.main.temp_min,
-      max_temperature: response.data.main.temp_max
+      max_temperature: response.data.main.temp_max,
+      humidity: response.data.main.humidity,
+      wind: response.data.wind.speed,
+      description: response.data.weather[0].description,
+      icon: response.data.weather[0].icon,
+      place: response.data.name + ", " + response.data.sys.country
     })
   }
 
@@ -37,7 +42,7 @@ export default function Current(){
                   </div>
                   <div className="col-6">
                     <div className="Icon">
-                      <img className="icon-display" id="icon" src="./icons/04d.svg" alt="" />
+                      <img className="icon-display" id="icon" src="./icons/04d.svg" alt={weatherData.description} />
                     </div>
                   </div>
                 </div>
@@ -45,22 +50,22 @@ export default function Current(){
             </div>
             <div className="col-6">
               <div className="PlaceTime">
-                <h2 className="location-display">Tokyo</h2>
+                <h2 className="location-display">{weatherData.place}</h2>
                 <h3 className="date-time">
                   <span id="weekday">Friday</span>
                   <span id="time"> 12:32</span>
                 </h3>
-                <p id="description">Cloudy</p>
+                <p id="description">{weatherData.description}</p>
               </div>
             </div>
           </div>
           <div className="Extra">
             <ul className="extra-info">
               <li>
-                Humidity: <span id="humidity">34</span>%
+                Humidity: <span id="humidity">{weatherData.humidity}</span>%
               </li>
               <li>
-                Wind: <span id="wind">12</span>km/h
+                Wind: <span id="wind">{weatherData.wind}</span>m/s
               </li>
             </ul>
           </div>
