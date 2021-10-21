@@ -10,28 +10,28 @@ export default function App() {
       <div className="widget">
         <header>
           <form>
-        <div className="input-group">
-          <input type="text"
+            <div className="input-group">
+                <input type="text"
               className="form-control form-bar enter"
               placeholder="Enter City"
               //onChange={handleValue}
-          />
-          <div className="input-group-append" id="button-addon4">
-            <input
+                />
+                <div className="input-group-append" id="button-addon4">
+                <input
               type="submit"
               className="btn btn-outline-secondary search form-bar"
               value="Search"
-            />
-            <button
+                />
+                <button
               className="btn btn-outline-secondary current form-bar"
               type="button"
               //onClick={searchGeoLocation}
-            >
-              Current
-            </button>
-          </div>
-        </div>
-      </form>
+                >
+                  Current
+                </button>
+                </div>
+            </div>
+          </form>
         </header>
           <Current />
           <div className="forecast">
