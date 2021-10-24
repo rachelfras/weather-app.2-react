@@ -31,7 +31,7 @@ export default function Current(props){
             <div className="col-6">
               <div className="PlaceTime">
                 <h2 className="location-display">{props.data.place}</h2>
-                <TimeDisplay timeData={props.data.date}/>
+                <TimeDisplay data={props.data.date}/>
                 <p id="description">{props.data.description}</p>
               </div>
             </div>
