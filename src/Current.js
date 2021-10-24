@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import "./App.css";
+import TimeDisplay from "./TimeDisplay";
 
 export default function Current(props){
     const [ready, setReady] = useState(false);
@@ -17,8 +18,10 @@ export default function Current(props){
       wind: response.data.wind.speed,
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
-      place: response.data.name + ", " + response.data.sys.country
+      place: response.data.name + ", " + response.data.sys.country,
+      date: new Date(response.data.dt * 1000)
     })
+    console.log(weatherData.date);
   }
 
 
@@ -51,10 +54,7 @@ export default function Current(props){
             <div className="col-6">
               <div className="PlaceTime">
                 <h2 className="location-display">{weatherData.place}</h2>
-                <h3 className="date-time">
-                  <span id="weekday">Friday</span>
-                  <span id="time"> 12:32</span>
-                </h3>
+                <TimeDisplay timeData={weatherData.date}/>
                 <p id="description">{weatherData.description}</p>
               </div>
             </div>
