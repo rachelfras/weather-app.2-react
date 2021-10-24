@@ -14,7 +14,7 @@ export default function App() {
             <div>
               <p>
                 <a
-                  href="https://github.com/rachelfras/weather-app-react"
+                  href="https://github.com/rachelfras/weather-app.2-react"
                   className="git-link"
                   target="_blank"
                   rel="noreferrer"
