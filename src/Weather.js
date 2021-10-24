@@ -3,14 +3,13 @@ import axios from "axios";
 import Current from "./Current";
 
 export default function Weather(){
-  const [ready, setReady] = useState(false);
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState({ready : false});
   const [city, setCity] = useState("Tokyo");
 
   function handleResponse(response){
-    setReady(true);
     console.log(response.data);
     setWeatherData({
+      ready: true,
       temperature: response.data.main.temp,
       min_temperature: response.data.main.temp_min,
       max_temperature: response.data.main.temp_max,
@@ -44,7 +43,7 @@ export default function Weather(){
     setCity(event.target.value);
   }
 
-  if(ready){
+  if(weatherData.ready){
     return(
       <div className="Weather">
         <header>
