@@ -3,6 +3,8 @@ import "./App.css";
 import TimeDisplay from "./TimeDisplay";
 
 export default function Current(props){
+  let icon = `http://openweathermap.org/img/wn/${props.data.icon}@2x.png`;
+
     return (
       <section className="current-weather">
         <div className="row">
@@ -22,7 +24,7 @@ export default function Current(props){
                   </div>
                   <div className="col-6">
                     <div className="Icon">
-                      <img className="icon-display" id="icon" src="./icons/04d.svg" alt={props.data.description} />
+                      <img className="icon-display" id="icon" src={icon} alt={props.data.description} />
                     </div>
                   </div>
                 </div>

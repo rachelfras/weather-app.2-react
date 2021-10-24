@@ -7,7 +7,6 @@ export default function Weather(){
   const [city, setCity] = useState("Tokyo");
 
   function handleResponse(response){
-    console.log(response.data);
     setWeatherData({
       ready: true,
       temperature: response.data.main.temp,
