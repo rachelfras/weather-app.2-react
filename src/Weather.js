@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import './Weather.css';
 import Current from "./Current";
+import Forecast from "./Forecast";
 
 export default function Weather(){
   const [weatherData, setWeatherData] = useState({ready : false});
@@ -72,12 +74,7 @@ export default function Weather(){
           </form>
         </header>
           <Current data={weatherData}/>
-          <div className="forecast">
-            <div id="forecast-box" className="container">
-              <div className="row">
-              </div>
-            </div>
-          </div>
+            <Forecast/>
       </div>
     );
   } else {
